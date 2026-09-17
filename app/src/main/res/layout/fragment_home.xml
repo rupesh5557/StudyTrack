@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,13 +9,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:paddingStart="20dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="8dp">
+
+        <!-- Header -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="StudyTrack"
-            android:textSize="28sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
@@ -22,71 +28,147 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Keep track of your assignments"
-            android:textSize="15sp" />
+            android:textSize="16sp"
+            android:textColor="@color/studytrack_text_secondary" />
 
         <!-- Statistics -->
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/studytrack_primary"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
 
-            <TextView
-                android:id="@+id/txtTotalAssignments"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Total\n0"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:paddingTop="18dp"
+                android:paddingBottom="18dp">
 
-            <TextView
-                android:id="@+id/txtCompletedAssignments"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Completed\n0"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"                    >
 
-            <TextView
-                android:id="@+id/txtPendingAssignments"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Pending\n0"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total"
+                        android:textSize="14sp"
+                        android:textColor="@color/studytrack_on_primary" />
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/txtTotalAssignments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="0"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/studytrack_on_primary"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Completed"
+                        android:textSize="14sp"
+                        android:textColor="@color/studytrack_on_primary"/>
+
+                    <TextView
+                        android:id="@+id/txtCompletedAssignments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="0"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/studytrack_on_primary"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pending"
+                        android:textSize="14sp"
+                        android:textColor="@color/studytrack_on_primary" />
+
+                    <TextView
+                        android:id="@+id/txtPendingAssignments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="0"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/studytrack_on_primary"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Assignments heading -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="26dp"
             android:text="Assignments"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
-        <Button
+        <!-- Add Assignment -->
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAddAssignment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="+ Add Assignment" />
+            android:minHeight="52dp"
+            android:text="+ Add Assignment"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/studytrack_on_primary"
+            app:backgroundTint="@color/studytrack_primary"
+            app:cornerRadius="26dp" />
+
+        <!-- Assignment List -->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/assignmentRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp"
             android:layout_weight="1" />
 
     </LinearLayout>
+
 
     <!-- Loading State -->
 
@@ -96,7 +178,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@android:color/white"
+        android:background="@color/studytrack_background"
         android:visibility="gone">
 
         <ProgressBar
@@ -112,6 +194,7 @@
 
     </LinearLayout>
 
+
     <!-- Empty State -->
 
     <LinearLayout
@@ -120,7 +203,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@android:color/white"
+        android:background="@color/studytrack_background"
+        android:padding="24dp"
         android:visibility="gone">
 
         <TextView
@@ -134,10 +218,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:gravity="center"
             android:text="Add your first assignment to get started"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/studytrack_text_secondary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEmptyAddAssignment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:minHeight="52dp"
+            android:text="Add Assignment"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/studytrack_on_primary"
+            app:backgroundTint="@color/studytrack_primary"
+            app:cornerRadius="26dp" />
 
     </LinearLayout>
+
 
     <!-- Error State -->
 
@@ -147,7 +247,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@android:color/white"
+        android:background="@color/studytrack_background"
         android:padding="24dp"
         android:visibility="gone">
 
@@ -160,12 +260,16 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRetry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Retry" />
+            android:minHeight="48dp"
+            android:text="Retry"
+            android:textColor="@color/studytrack_on_primary"
+            app:backgroundTint="@color/studytrack_primary"
+            app:cornerRadius="24dp" />
 
     </LinearLayout>
 

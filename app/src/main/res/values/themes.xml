@@ -1,9 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.StudyTrack" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <style name="Base.Theme.StudyTrack"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Primary -->
+
+        <item name="colorPrimary">@color/studytrack_primary</item>
+        <item name="colorOnPrimary">@color/studytrack_on_primary</item>
+
+        <!-- Surface -->
+
+        <item name="colorSurface">@color/studytrack_surface</item>
+        <item name="colorOnSurface">@color/studytrack_text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/studytrack_text_secondary</item>
+
+        <!-- Error -->
+
+        <item name="colorError">@color/studytrack_error</item>
+
+        <!-- App background -->
+
+        <item name="android:windowBackground">
+            @color/studytrack_background
+        </item>
+
+        <!-- System bars -->
+
+        <item name="android:navigationBarColor">
+            @color/studytrack_background
+        </item>
+
+        <item name="android:statusBarColor">
+            @color/studytrack_background
+        </item>
+
     </style>
 
-    <style name="Theme.StudyTrack" parent="Base.Theme.StudyTrack" />
+    <style name="Theme.StudyTrack"
+        parent="Base.Theme.StudyTrack" />
+
+    <style name="StudyTrackBottomNavIndicator"
+        parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+
+        <item name="android:color">@color/studytrack_nav_indicator</item>
+
+    </style>
+
 </resources>

@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <!-- Primary -->
+
+    <color name="studytrack_primary">#3F5E9C</color>
+    <color name="studytrack_on_primary">#FFFFFF</color>
+    <color name="studytrack_nav_indicator">#E8ECF5</color>
+
+    <!-- Background / Surface -->
+
+    <color name="studytrack_background">#F7F8FC</color>
+    <color name="studytrack_surface">#FFFFFF</color>
+
+    <!-- Text -->
+
+    <color name="studytrack_text_primary">#1B1B1F</color>
+    <color name="studytrack_text_secondary">#5F6068</color>
+
+    <!-- Error -->
+
+    <color name="studytrack_error">#BA1A1A</color>
+
 </resources>

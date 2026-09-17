@@ -1,69 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"
+    android:background="@color/studytrack_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:paddingStart="20dp"
+        android:paddingTop="24dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="32dp">
 
-        <TextView
-            android:id="@+id/txtDetailSubject"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Subject"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+        <!-- Assignment Information -->
 
-        <TextView
-            android:id="@+id/txtDetailTitle"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Assignment Title"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            app:cardBackgroundColor="@color/studytrack_surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
 
-        <TextView
-            android:id="@+id/txtDetailDueDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Due: 20/9/2026"
-            android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
 
-        <TextView
-            android:id="@+id/txtDetailDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Assignment description"
-            android:textSize="17sp" />
+                <!-- Subject -->
 
-        <Button
+                <TextView
+                    android:id="@+id/txtDetailSubject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subject"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/studytrack_primary" />
+
+                <!-- Title -->
+
+                <TextView
+                    android:id="@+id/txtDetailTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Assignment Title"
+                    android:textSize="27sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/studytrack_text_primary" />
+
+                <!-- Due Date -->
+
+                <TextView
+                    android:id="@+id/txtDetailDueDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Due: 20/9/2026"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/studytrack_text_secondary" />
+
+                <!-- Description -->
+
+                <TextView
+                    android:id="@+id/txtDetailDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Assignment description"
+                    android:textSize="17sp"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="@color/studytrack_text_primary" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- Complete Button -->
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnComplete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Mark as Completed" />
+            android:layout_marginTop="24dp"
+            android:minHeight="52dp"
+            android:text="Mark as Completed"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/studytrack_on_primary"
+            app:backgroundTint="@color/studytrack_primary"
+            app:cornerRadius="26dp" />
 
-        <Button
+
+        <!-- Edit Button -->
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Edit Assignment" />
+            android:minHeight="52dp"
+            android:text="Edit Assignment"
+            android:textSize="16sp"
+            android:textColor="@color/studytrack_primary"
+            app:backgroundTint="@android:color/transparent"
+            app:cornerRadius="26dp"
+            app:strokeColor="@color/studytrack_primary"
+            app:strokeWidth="2dp" />
 
-        <Button
+
+        <!-- Delete Button -->
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDelete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Delete Assignment" />
+            android:layout_marginTop="24dp"
+            android:minHeight="52dp"
+            android:text="Delete Assignment"
+            android:textSize="16sp"
+            android:textColor="@color/studytrack_error"
+            app:backgroundTint="@android:color/transparent"
+            app:cornerRadius="26dp"
+            app:strokeColor="@color/studytrack_error"
+            app:strokeWidth="2dp" />
 
     </LinearLayout>
 

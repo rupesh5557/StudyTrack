@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,7 +39,7 @@ public class HomeFragment extends Fragment {
 
     private TextView txtTotalAssignments, txtCompletedAssignments, txtPendingAssignments;
 
-    private Button btnAddAssignment, btnRetry;
+    private Button btnAddAssignment, btnRetry, btnEmptyAddAssignment;
 
     private List<Assignment> assignmentList;
 
@@ -92,6 +91,9 @@ public class HomeFragment extends Fragment {
         btnAddAssignment =
                 view.findViewById(R.id.btnAddAssignment);
 
+        btnEmptyAddAssignment =
+                view.findViewById(R.id.btnEmptyAddAssignment);
+
         loadingLayout = view.findViewById(R.id.loadingLayout);
         emptyLayout = view.findViewById(R.id.emptyLayout);
         errorLayout = view.findViewById(R.id.errorLayout);
@@ -134,6 +136,16 @@ public class HomeFragment extends Fragment {
 
         // Add Assignment button
         btnAddAssignment.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    requireContext(),
+                    AddAssignmentActivity.class
+            );
+
+            startActivity(intent);
+        });
+
+        btnEmptyAddAssignment.setOnClickListener(v -> {
 
             Intent intent = new Intent(
                     requireContext(),
@@ -262,16 +274,10 @@ public class HomeFragment extends Fragment {
 
         int pending = total - completed;
 
-        txtTotalAssignments.setText(
-                "Total\n" + total
-        );
+        txtTotalAssignments.setText(String.valueOf(total));
 
-        txtCompletedAssignments.setText(
-                "Completed\n" + completed
-        );
+        txtCompletedAssignments.setText(String.valueOf(completed));
 
-        txtPendingAssignments.setText(
-                "Pending\n" + pending
-        );
+        txtPendingAssignments.setText(String.valueOf(pending));
     }
 }

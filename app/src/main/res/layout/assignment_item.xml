@@ -3,11 +3,20 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="3dp">
+
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+
+    android:foreground="?attr/selectableItemBackground"
+
+    app:cardBackgroundColor="@color/studytrack_surface"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,30 +24,47 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Subject -->
+
         <TextView
             android:id="@+id/txtSubject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="DBMS"
+            android:textSize="13sp"
             android:textStyle="bold"
-            android:textSize="14sp" />
+            android:textColor="@color/studytrack_primary" />
+
+        <!-- Assignment Title -->
 
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_marginTop="6dp"
+
+            android:maxLines="2"
+            android:ellipsize="end"
+
             android:text="Normalization Assignment"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/studytrack_text_primary" />
+
+        <!-- Due Date -->
 
         <TextView
             android:id="@+id/txtDueDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Due: 20 Sep 2026"
-            android:textSize="14sp" />
+
+            android:layout_marginTop="10dp"
+
+            android:text="Due: 20/9/2026"
+            android:textSize="14sp"
+            android:textColor="@color/studytrack_text_secondary" />
 
     </LinearLayout>
 

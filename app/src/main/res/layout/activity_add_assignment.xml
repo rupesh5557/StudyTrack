@@ -3,62 +3,92 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:paddingStart="20dp"
+        android:paddingTop="24dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="32dp">
+
+        <!-- Screen Title -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add Assignment"
-            android:textSize="28sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
+
+        <!-- Subject -->
 
         <EditText
             android:id="@+id/edtSubject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="28dp"
+            android:minHeight="56dp"
             android:hint="Subject"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textSize="16sp" />
+
+        <!-- Assignment Title -->
 
         <EditText
             android:id="@+id/edtTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:minHeight="56dp"
             android:hint="Assignment Title"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textSize="16sp" />
+
+        <!-- Description -->
 
         <EditText
             android:id="@+id/edtDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:hint="Description"
+            android:minHeight="120dp"
             android:gravity="top"
-            android:minLines="4"
-            android:inputType="textMultiLine" />
+            android:hint="Description"
+            android:inputType="textMultiLine"
+            android:textSize="16sp" />
+
+        <!-- Due Date -->
 
         <EditText
             android:id="@+id/edtDueDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:minHeight="56dp"
             android:hint="Due Date"
             android:focusable="false"
-            android:clickable="true" />
+            android:clickable="true"
+            android:textSize="16sp" />
 
-        <Button
+        <!-- Save Button -->
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveAssignment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Save Assignment" />
+            android:layout_marginTop="28dp"
+            android:minHeight="52dp"
+            android:text="Save Assignment"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/studytrack_on_primary"
+            app:backgroundTint="@color/studytrack_primary"
+            app:cornerRadius="26dp" />
 
     </LinearLayout>
 

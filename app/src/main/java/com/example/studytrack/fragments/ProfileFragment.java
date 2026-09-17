@@ -1,10 +1,15 @@
 package com.example.studytrack.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,15 +25,18 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfileFragment extends Fragment {
 
-    private TextView txtStudentName;
-    private TextView txtStudentDepartment;
-    private TextView txtStudentYear;
+    private EditText edtStudentName;
+    private EditText edtStudentDepartment;
+    private EditText edtStudentYear;
+    private Button btnSaveProfile;
 
     private TextView txtProfileTotal;
     private TextView txtProfileCompleted;
     private TextView txtProfilePending;
 
     private DatabaseReference assignmentsRef;
+
+    private SharedPreferences preferences;
 
     public ProfileFragment() {
     }
@@ -53,14 +61,17 @@ public class ProfileFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-        txtStudentName =
-                view.findViewById(R.id.txtStudentName);
+        edtStudentName =
+                view.findViewById(R.id.edtStudentName);
 
-        txtStudentDepartment =
-                view.findViewById(R.id.txtStudentDepartment);
+        edtStudentDepartment =
+                view.findViewById(R.id.edtStudentDepartment);
 
-        txtStudentYear =
-                view.findViewById(R.id.txtStudentYear);
+        edtStudentYear =
+                view.findViewById(R.id.edtStudentYear);
+
+        btnSaveProfile =
+                view.findViewById(R.id.btnSaveProfile);
 
         txtProfileTotal =
                 view.findViewById(R.id.txtProfileTotal);
@@ -71,10 +82,68 @@ public class ProfileFragment extends Fragment {
         txtProfilePending =
                 view.findViewById(R.id.txtProfilePending);
 
-        // Temporary student information
-        txtStudentName.setText("Student Name");
-        txtStudentDepartment.setText("Department: Computer Engineering");
-        txtStudentYear.setText("Year: Third Year");
+
+        // Local profile storage
+
+        preferences =
+                requireContext().getSharedPreferences(
+                        "StudyTrackProfile",
+                        Context.MODE_PRIVATE
+                );
+
+        loadProfile();
+
+
+        // Save profile
+
+        btnSaveProfile.setOnClickListener(v -> {
+
+            String name =
+                    edtStudentName.getText().toString().trim();
+
+            String department =
+                    edtStudentDepartment.getText().toString().trim();
+
+            String year =
+                    edtStudentYear.getText().toString().trim();
+
+
+            if (name.isEmpty()) {
+                edtStudentName.setError("Enter your name");
+                edtStudentName.requestFocus();
+                return;
+            }
+
+            if (department.isEmpty()) {
+                edtStudentDepartment.setError("Enter your department");
+                edtStudentDepartment.requestFocus();
+                return;
+            }
+
+            if (year.isEmpty()) {
+                edtStudentYear.setError("Enter your year");
+                edtStudentYear.requestFocus();
+                return;
+            }
+
+
+            preferences.edit()
+                    .putString("name", name)
+                    .putString("department", department)
+                    .putString("year", year)
+                    .apply();
+
+
+            Toast.makeText(
+                    requireContext(),
+                    "Profile saved",
+                    Toast.LENGTH_SHORT
+            ).show();
+
+        });
+
+
+        // Firebase
 
         assignmentsRef =
                 FirebaseDatabase.getInstance()
@@ -82,6 +151,25 @@ public class ProfileFragment extends Fragment {
 
         loadStatistics();
     }
+
+
+    private void loadProfile() {
+
+        String name =
+                preferences.getString("name", "");
+
+        String department =
+                preferences.getString("department", "");
+
+        String year =
+                preferences.getString("year", "");
+
+
+        edtStudentName.setText(name);
+        edtStudentDepartment.setText(department);
+        edtStudentYear.setText(year);
+    }
+
 
     private void loadStatistics() {
 
@@ -115,6 +203,7 @@ public class ProfileFragment extends Fragment {
 
                         int pending = total - completed;
 
+
                         txtProfileTotal.setText(
                                 "Total Assignments: " + total
                         );
@@ -127,6 +216,7 @@ public class ProfileFragment extends Fragment {
                                 "Pending: " + pending
                         );
                     }
+
 
                     @Override
                     public void onCancelled(

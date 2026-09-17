@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Primary -->
+
+    <color name="studytrack_primary">#AFC6FF</color>
+    <color name="studytrack_on_primary">#0A2F62</color>
+    <color name="studytrack_nav_indicator">#29313F</color>
+
+    <!-- Background / Surface -->
+
+    <color name="studytrack_background">#111318</color>
+    <color name="studytrack_surface">#1B1D23</color>
+
+    <!-- Text -->
+
+    <color name="studytrack_text_primary">#E5E1E9</color>
+    <color name="studytrack_text_secondary">#C5C6D0</color>
+
+    <!-- Error -->
+
+    <color name="studytrack_error">#FFB4AB</color>
+
+</resources>
